@@ -1,6 +1,6 @@
 # i3lock-fancy-dualmonitor
 
-This is an i3lock bash script that takes a screenshot of the desktop, blurs the background and adds a lock icon and text for each monitor.
+This is an updated fork of [meskarune dual-monitor i3lock-fancy](https://github.com/meskarune/i3lock-fancy/tree/dualmonitors).
 
 ![screen shot of lockscreen](https://raw.githubusercontent.com/meskarune/i3lock-fancy/dualmonitors/screenshot.png)
 
@@ -8,7 +8,7 @@ This is an i3lock bash script that takes a screenshot of the desktop, blurs the 
 
 ## Dependencies
 
-* <s>[i3lock-color-git](https://github.com/eBrnd/i3lock-color)</s>
+* <s>[i3lock-color-git](https://github.com/eBrnd/i3lock-color) (deprecated)</s>
 * [i3lock-color-git](https://github.com/Arcaena/i3lock-color) - this is a fork of i3lock-color that is kept up to date with i3lock
 * imagemagick
 * bash
@@ -25,8 +25,8 @@ This is an i3lock bash script that takes a screenshot of the desktop, blurs the 
 To install i3lock-fancy-dualmonitor manually, git clone the repository, checkout
 the dual monitors fork branch and run the make file.:
 
-    git clone <this repo fork>
-    cd i3lock-fancy
+    git clone git@github.com:IVIGG/i3lock-fancy-dualmonitor.git
+    cd i3lock-fancy-dualmonitor
     sudo make install
 
 > Note: To uninstall i3lock-fancy-dualmonitor execute "sudo make uninstall"
@@ -60,6 +60,21 @@ example: ```i3lock-fancy-dualmonitor -gpf Comic-Sans-MS```
 
 ### Extras
 
+#### Custom shortcut
+You can create a custom shortcut to lock your screen. Examples
+
+* **Standard lock (SUPER + L)**
+```sh
+i3lock-fancy-dualmonitor
+```
+
+* **Desktop view lock (SUPER + SHIFT + L)**
+```sh
+i3lock-fancy-dualmonitor -d 
+```
+
+
+#### Autolock
 Use this with xautolock to automatically lock the screen after a set time.
 
 Systemd Unit file (edit for your own use):
