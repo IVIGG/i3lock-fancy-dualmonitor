@@ -7,8 +7,8 @@ set -o errexit -o noclobber -o nounset
 # Effects 
 hue=(-level "0%,100%,0.6")
 effect=(-filter Gaussian -resize 20% -define "filter:sigma=1.5" -resize 500.5%)
-# Default system sans-serif font
-font=$(convert -list font | awk "{ a[NR] = \$2 } /family: $(fc-match sans -f "%{family}\n")/ { print a[NR-1]; exit }")
+# Default system sans-serif font or DejaVu-Sans as fallback
+font="DejaVu-Sans"  # Fallback font
 pointsize=26                                                    # Text pointsize, in pixels
 text_off_y=160                                                  # Y axis space from lock, in pixels
 shot=(import -silent -window root)                              # Shot kind
@@ -170,7 +170,7 @@ done <<<"$(xrandr)"
 convert "$image" "${hue[@]}" "${effect[@]}" "${lock[@]}" "$image"
 
 # Add modified screenshot to i3lock command
-i3lock_cmd=(i3lock -i "$image" -e)
+i3lock_cmd=(i3lock -i "$image" -e --debug)
 
 # try to use i3lock with prepared parameters
 if ! "${i3lock_cmd[@]}" "${param[@]}" >/dev/null 2>&1; then
